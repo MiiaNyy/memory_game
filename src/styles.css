@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+font-family: 'Great Vibes', cursive;
+font-family: 'Oregano', cursive;
+font-family: 'Montserrat', sans-serif;
+*/
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* TYPOGRAPHY */
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Oregano', cursive;
+}
+
+h1 {
+    font-size: 3.75rem;
+    font-family: 'Great Vibes', cursive;
+}
+
+h2 {
+    margin: 0;
+    padding: 0.15em;
+}
+
+
+/* LAYOUT */
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid black;
+    background-color: rgba(0,7,15,0.41);
+}
+
+
+/*.background-img {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url('./images/backgroundImage.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #dfb0ff;
+
+    filter: blur(1px);
+}*/
+
+.content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+
+.game-board {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 2px solid #ec11c7;
+}
+
+.card {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 180px;
+    margin-top: 2em;
+    text-align: center;
+    background-color: ghostwhite;
+    border: 10px solid palevioletred;
+}
+
+.card__img {
+    width:  100%;
+    max-height: 160px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+
+
+
+
+
