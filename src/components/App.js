@@ -7,10 +7,6 @@ function App() {
     return (
         <>
             <Header/>
-            <div className="container score-counter">
-                <p>Current Score 0</p>
-                <p>Max score 9</p>
-            </div>
             <GameBoard/>>
         </>
     )
