@@ -21,7 +21,7 @@ import uranus from '../images/sailor-uranus.jpg';
 import starLights from '../images/starlights.jpg'
 import tuxedoMask from '../images/tuxedo-mask.jpg';
 
-const cardData = [
+const characterData = [
     {
         name: 'Artemis',
         image: artemis,
@@ -124,6 +124,6 @@ const cardData = [
     },
 ];
 
-export default cardData;
+export default characterData;
 
 

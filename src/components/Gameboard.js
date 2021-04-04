@@ -1,34 +1,42 @@
 import React, { useState } from "react";
+import ScoreBoard from "./ScoreBoard";
 
-import cardData from "../helpers/characterData";
-import shuffleArray from "../helpers/shuffleArray";
+import characterData from "../helpers/characterData";
+import shuffleArrayOrder from "../helpers/shuffleArrayOrder";
 
+function getEightCardItems(arr) {
+    return arr.filter((item, index)=>index < 8);
+}
 
 function GameBoard() {
-    const shuffledCardData = shuffleArray(cardData)
-    const [cardArray, setCardArray] = useState(shuffledCardData);
+    const [cardArray, setCardArray] = useState(shuffleArrayOrder(characterData));
+    const [eightCardItems, setEightCardItems] = useState(getEightCardItems(cardArray));
+
+    const [currentScore, setCurrentScore] = useState(0);
+    const [highScore, setHighScore] = useState(0);
 
     return (
         <div className="container game-board">
+
             <div className="container score-counter">
-                <p>Current Score 0</p>
-                <p>Max score 9</p>
+                <p>Current Score { currentScore }</p>
+                <p>High score { highScore }</p>
                 <button onClick={ ()=>{
-                    let newState = shuffleArray(cardArray);
-                    console.log('previous state is ' + cardArray);
-                    console.log('new state is ' + newState);
-                    setCardArray(newState);
-                } }>Shuffle
+                    setCardArray((prev)=>shuffleArrayOrder(prev));
+                    setEightCardItems(getEightCardItems(cardArray))
+                } }>
+                    Shuffle
                 </button>
+
             </div>
             {
-                cardArray.map((item)=>{
+                eightCardItems.map((item)=>{
                     return <Card obj={ item } key={ item.id }/>
-                })
-            }
+                }) }
         </div>
     )
 }
+
 
 function Card(props) {
     return (
