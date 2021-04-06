@@ -27,10 +27,7 @@ function handleCardClick(stateObj, characterObj) {
             return [...prev, currentCard]
         });
         stateObj.setCurrentScore((prev)=>prev + 1);
-        stateObj.setCurrentCards(()=> getCardsFromShuffledArr(characterData, stateObj.gameMode));
-
-
-
+        stateObj.setCurrentCards(()=> getCardsFromShuffledArr(stateObj.currentCards));
     }
 }
 
@@ -50,7 +47,7 @@ function checkIfGameContinues(stateObj, currentCharacter) {
 
 function gameOver(obj) {
     alert('GAME OVER');
-    obj.setCurrentCards(()=>getCardsFromShuffledArr(characterData, obj.gameMode));
+    obj.setCurrentCards(()=>getCardsFromShuffledArr(obj.currentCards));
     if ( obj.currentScore > obj.highScore ) {
         obj.setHighScore(obj.currentScore);
     }

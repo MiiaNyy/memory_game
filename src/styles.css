@@ -13,6 +13,12 @@ font-family: 'Montserrat', sans-serif;
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    background-image: url("./images/backgroundImage.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #dfb0ff;
 }
 
 img {
@@ -32,6 +38,7 @@ h2, h3, h4, h5, h6 {
 h1 {
     font-size: 3.75rem;
     font-family: 'Great Vibes', cursive;
+    margin-bottom: 0;
 }
 
 h2 {
@@ -57,31 +64,6 @@ h2 {
 }
 
 
-/*.background-img {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    display: block;
-    width: 100vw;
-    min-height: 100vh;
-    background-image: url('./images/backgroundImage.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #dfb0ff;
-
-    filter: blur(1px);
-}*/
-
-.content {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-}
-
 
 .card {
     display: flex;
@@ -101,11 +83,6 @@ h2 {
     object-position: center top;
 }
 
-
-
-.score-counter {
-    padding: 1em;
-}
 
 .score-counter p {
     margin-bottom: 0;

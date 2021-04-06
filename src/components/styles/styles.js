@@ -1,18 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const GameBoardContainer = styled.section`
-      display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-    `;
 
-const CurrentLevelHeader = styled.h3`
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 0;
-      margin-top: 1em;
-      
-    `;
 
-export {GameBoardContainer, CurrentLevelHeader};
+// Gameboard
+const GameBoardContainer = styled.main`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2em;
+`;
+
+
+// Scoreboard
+const ScoreContainer = styled.section`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em;
+  background-color: rgba(0, 7, 15, 0.41);
+  color: aliceblue;
+  ${ props=>
+          props.primary && css`
+            background-color: rgba(0,7,15,0.71)` }
+`;
+
+export { GameBoardContainer, ScoreContainer };
