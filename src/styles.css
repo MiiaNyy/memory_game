@@ -50,6 +50,12 @@ h2 {
     background-color: rgba(0,7,15,0.41);
 }
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 /*.background-img {
     position: fixed;
@@ -100,6 +106,16 @@ h2 {
     max-height: 160px;
     object-fit: cover;
     object-position: center top;
+}
+
+
+
+.score-counter {
+    padding: 1em;
+}
+
+.score-counter p {
+    margin-bottom: 0;
 }
 
 

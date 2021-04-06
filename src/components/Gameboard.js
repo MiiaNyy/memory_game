@@ -1,59 +1,105 @@
 import React, { useState, useRef } from "react";
 
 import characterData from "../data/characterData";
-import getEightCardsFromShuffledArr from "../helpers/getEightCardsFromShuffledArr";
+import getCardsFromShuffledArr from "../helpers/getCardsFromShuffledArr";
+import { setItemsToStorage, getItemsFromStorage } from "../helpers/localStorage"
 
 
 function GameBoard() {
-    const [currentCards, setCurrentCards] = useState(getEightCardsFromShuffledArr(characterData));
+    const [currentCards, setCurrentCards] = useState(getCardsFromShuffledArr(characterData));
+
+    const [clickedCharacters, setClickedCharacters] = useState([]);
 
     const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
 
+    getItemsFromStorage('highScore', setHighScore, highScore);
+    setItemsToStorage('highScore', highScore);
+
+
+    const stateObj = {
+        currentScore,
+        setCurrentScore,
+        highScore,
+        setHighScore,
+        setCurrentCards,
+        clickedCharacters,
+        setClickedCharacters,
+    }
 
     return (
         <div className="container game-board">
 
-            <div className="container score-counter">
+            <div className="container flex score-counter">
                 <p>Current Score { currentScore }</p>
                 <p>High score { highScore }</p>
-                <button onClick={ ()=>setCurrentCards(()=>getEightCardsFromShuffledArr(characterData)) }>
+                <p>Max score 20</p>
+                <button onClick={ ()=>setCurrentCards(getCardsFromShuffledArr(characterData)) }>
                     Shuffle
                 </button>
             </div>
             {
                 currentCards.map((item)=>{
-                    return <Card setCurrentScore={ setCurrentScore } setCurrentCards={ setCurrentCards } obj={ item }
-                                 key={ item.id }/>
+                    return <Card stateObj={ stateObj } obj={ item } key={ item.id } id={ item.id }/>
                 }) }
         </div>
     )
 }
 
+function gameOver(obj) {
+    alert('GAME OVER');
+    obj.setCurrentCards(()=>getCardsFromShuffledArr(characterData));
+    if ( obj.currentScore > obj.highScore ) {
+        obj.setHighScore(obj.currentScore);
+    }
+    obj.setCurrentScore(0);
+    obj.setClickedCharacters([]);
+}
+
+
 
 function Card(props) {
-    let obj = props.obj;
-    const countRef = useRef(0);
+    const characterObj = props.obj;
+    const stateObj = props.stateObj;
 
-    function handleCardClick() {
-        countRef.current++;
-        if ( countRef.current > 1 ) {
-            console.log('GAME OVER')
-            console.log('I have clicked this ' + countRef.current + ' times');
-        } else {
-            props.setCurrentCards(()=>getEightCardsFromShuffledArr(characterData));
-            props.setCurrentScore((prev)=> prev+1);
-            console.log('This is the first time I have clicked this card');
-        }
 
-    };
+
     return (
-        <div onClick={ handleCardClick  } id={ obj.id } className="card">
-            <h3>{ obj.name }</h3>
-            <img className="card__img" src={ obj.image } alt={ obj.description }/>
+        <div onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id } className="card">
+            <h3>{ characterObj.name }</h3>
+            <img className="card__img" src={ characterObj.image } alt={ characterObj.description }/>
         </div>
     )
 }
 
-export default GameBoard;
 
+
+function handleCardClick(stateObj, characterObj) {
+    let currentCharacter = characterObj.id;
+    let clickedCharacters = stateObj.clickedCharacters;
+    let gameIsOver = false;
+
+    if ( clickedCharacters.length > 0 ) {
+        for (let i = 0; i < clickedCharacters.length; i++) {
+            if ( currentCharacter === clickedCharacters[i] ) {
+                gameIsOver = true;
+                gameOver(stateObj, );
+            }
+        }
+    }
+    if ( !gameIsOver ) {
+        stateObj.setClickedCharacters((prev) => {
+            return [...prev, currentCharacter]
+        });
+        stateObj.setCurrentScore((prev)=>prev + 1);
+        stateObj.setCurrentCards(()=>getCardsFromShuffledArr(characterData));
+        console.log(stateObj.clickedCharacters.length);
+    }
+
+}
+
+
+
+
+
+export default GameBoard;

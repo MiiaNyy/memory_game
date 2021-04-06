@@ -1,6 +1,6 @@
 
 // Takes in a array and shuffles the order and returns first eight items
-function getEightCardsFromShuffledArr(arr) {
+function getCardsFromShuffledArr(arr) {
     return arr
         .map((a) => ({sort: Math.random(), value: a}))
         .sort((a, b) => a.sort - b.sort)
@@ -8,4 +8,4 @@ function getEightCardsFromShuffledArr(arr) {
         .filter((a, index)=>index < 8);
 }
 
-export default getEightCardsFromShuffledArr;
+export default getCardsFromShuffledArr;
