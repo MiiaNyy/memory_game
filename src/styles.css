@@ -39,6 +39,7 @@ h1 {
     font-size: 3.75rem;
     font-family: 'Great Vibes', cursive;
     margin-bottom: 0;
+    color: #dfb0ff;
 }
 
 h2 {
@@ -46,51 +47,17 @@ h2 {
     padding: 0.15em;
 }
 
-
-/* LAYOUT */
-
-.container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    border: 2px solid black;
-    background-color: rgba(0,7,15,0.41);
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-
-.card {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100%;
-    max-width: 180px;
-    margin-top: 2em;
-    text-align: center;
-    background-color: ghostwhite;
-    border: 10px solid palevioletred;
-}
-
-.card__img {
-    width:  100%;
-    max-height: 160px;
-    object-fit: cover;
-    object-position: center top;
-}
-
-
-.score-counter p {
+p {
     margin-bottom: 0;
 }
 
-
-
-
-
+button {
+    padding: 0.7em 1.4em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
 
 

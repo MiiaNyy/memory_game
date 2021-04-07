@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from "./Header";
 import GameBoard from "./gameboard/Gameboard";
-import { BackgroundImage, ContentWrapper } from "./styles/styles";
+import StartingScreen from "./StartingScreen";
+
 
 function App() {
-    return (
-        <>
-            <Header/>
-            <GameBoard/>
-        </>
-    )
+    const [gameIsStarted, setGameIsStarted] = useState(false);
+
+    if ( !gameIsStarted ) {
+        return <StartingScreen setGameIsStarted={setGameIsStarted}/>
+    } else {
+        return (
+            <>
+                <Header/>
+                <GameBoard/>
+            </>
+        )
+    }
 }
+
 
 
 export default App;

@@ -1,6 +1,7 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
-import characterData from "../../data/characterData";
+import { CharacterImage, Card } from "../styles/styles"
 import React from "react";
+
 
 let clickCounter = 0;
 
@@ -9,14 +10,12 @@ function CharacterCard(props) {
     const stateObj = props.stateObj;
 
     return (
-        <div onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id } className="card">
+        <Card counter={props.counter} onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
             <h3>{ characterObj.name }</h3>
-            <img className="card__img" src={ characterObj.image } alt={ characterObj.description }/>
-        </div>
+            <CharacterImage src={ characterObj.image } alt={ characterObj.description }/>
+        </Card>
     )
 }
-
-
 
 function handleCardClick(stateObj, characterObj) {
     let currentCard = characterObj.id;
@@ -27,7 +26,7 @@ function handleCardClick(stateObj, characterObj) {
             return [...prev, currentCard]
         });
         stateObj.setCurrentScore((prev)=>prev + 1);
-        stateObj.setCurrentCards(()=> getCardsFromShuffledArr(stateObj.currentCards));
+        stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
     }
 }
 

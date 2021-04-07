@@ -2,22 +2,22 @@ import {v4 as uuidv4} from 'uuid';
 
 import artemis from '../images/Artemis.png';
 import ddGirls from '../images/dd-girls.png';
-import luna from '../images/luna.jpg';
+import luna from '../images/luna.png';
 import kakyuu from '../images/princess-kakyuu.png';
 import nehelenia from '../images/Queen_Nehelenia.jpg';
 import beryl from '../images/queen-beryljpg.jpg';
 import serenity from '../images/queen-serenity.jpg';
-import chibiMoon from '../images/Sailor_Chibi_Moon.jpg';
-import jupiter from '../images/Sailor_Jupter.jpg';
-import mars from '../images/Sailor_Mars.jpg';
-import moon from '../images/sailor_moon.jpg';
-import venus from '../images/sailor_venus.png';
+import chibiMoon from '../images/Chibi_Bust.png';
+import jupiter from '../images/Jupiter_Bust.png';
+import mars from '../images/Mars_Bust.png';
+import moon from '../images/Moon_Bust.png';
+import venus from '../images/Venus_Bust.png';
 import galaxia from '../images/sailor-galaxia.jpg';
-import mercury from '../images/sailor-mercury.jpg';
-import neptune from '../images/sailor-neptune.jpg';
-import pluto from '../images/sailor-pluto.jpg';
-import saturn from '../images/sailor-saturn.jpg';
-import uranus from '../images/sailor-uranus.jpg';
+import mercury from '../images/Mercury_Bust.png';
+import neptune from '../images/Neptune_Bust.png';
+import pluto from '../images/Sailor-Pluto.png';
+import saturn from '../images/Sailor_Saturn.png';
+import uranus from '../images/Uranus_Bust.png';
 import starLights from '../images/starlights.jpg'
 import tuxedoMask from '../images/tuxedo-mask.jpg';
 

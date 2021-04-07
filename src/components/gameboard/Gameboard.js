@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { GameBoardContainer, CurrentLevelHeader } from '../styles/styles'
+import React, { useState, useEffect } from "react";
+import { GameBoardContainer, Container, CharacterImage } from '../styles/styles'
+
 
 import CharacterCard from "./CharacterCard";
 import Scoreboard from "./Scoreboard";
@@ -33,18 +34,19 @@ function GameBoard() {
 
     getItemsFromStorage('highScore', setHighScore, highScore);
     setItemsToStorage('highScore', highScore);
-
     return (
-        <div className="container">
+        <Container gameboard>
             <Scoreboard stateObj={ stateObj }/>
             <GameBoardContainer>
-                { currentCards.map((item)=>{
-                    return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
-                }) }
+                {
+                    currentCards.map((item)=>{
+                        return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
+                    }) }
             </GameBoardContainer>
-        </div>
+        </Container>
     )
 }
+
 
 function getMaximumScore(gameMode) {
     if ( gameMode === 'Easy' ) {
