@@ -8,15 +8,15 @@ import Scoreboard from "./Scoreboard";
 import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
 import { setItemsToStorage, getItemsFromStorage } from "../../helpers/localStorage"
 
-function GameBoard() {
-    const [gameMode, setGameMode] = useState('Medium');
+function GameBoard(props) {
 
-    const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(gameMode));
+
+    const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(props.gameMode));
     const [clickedCards, setClickedCards] = useState([]);
 
     const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
-    const [maxScore, setMaxScore] = useState(getMaximumScore(gameMode));
+    const [maxScore, setMaxScore] = useState(getMaximumScore(props.gameMode));
 
     const stateObj = {
         currentScore,
@@ -27,8 +27,8 @@ function GameBoard() {
         setCurrentCards,
         clickedCards,
         setClickedCards,
-        gameMode,
-        setGameMode,
+        gameMode: props.gameMode,
+        setGameMode: props.setGameMode,
         maxScore,
     }
 

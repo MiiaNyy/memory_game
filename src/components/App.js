@@ -6,15 +6,16 @@ import StartingScreen from "./StartingScreen";
 
 
 function App() {
+    const [gameMode, setGameMode] = useState('');
     const [gameIsStarted, setGameIsStarted] = useState(false);
 
     if ( !gameIsStarted ) {
-        return <StartingScreen setGameIsStarted={setGameIsStarted}/>
+        return <StartingScreen setGameMode={setGameMode} setGameIsStarted={setGameIsStarted}/>
     } else {
         return (
             <>
                 <Header/>
-                <GameBoard/>
+                <GameBoard gameMode={gameMode} setGameMode={setGameMode}/>
             </>
         )
     }

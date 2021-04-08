@@ -19,6 +19,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-color: #dfb0ff;
+
 }
 
 img {
@@ -60,4 +61,8 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
+
+.sticky {
+
+}
 
