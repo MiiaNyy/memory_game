@@ -8,7 +8,7 @@ function CharacterCard(props) {
     const stateObj = props.stateObj;
 
     return (
-        <Card counter={props.counter} onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
+        <Card counter={ props.counter } onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
             <h3>{ characterObj.name }</h3>
             <CharacterImage src={ characterObj.image } alt={ characterObj.description }/>
         </Card>
@@ -24,8 +24,14 @@ function handleCardClick(stateObj, characterObj) {
             return [...prev, currentCard]
         });
         stateObj.setCurrentScore((prev)=>prev + 1);
-        stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
+
+        if ( stateObj.currentScore === (stateObj.maxScore - 1) || stateObj.currentScore >= stateObj.maxScore ) {
+            stateObj.setUserWon(true);
+        } else {
+            stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
+        }
     }
+    console.log('current score is ' + stateObj.currentScore + ' and max score is ' + stateObj.maxScore);
 }
 
 function checkIfGameContinues(stateObj, currentCharacter) {

@@ -67,6 +67,16 @@ button {
     transition: all 0.2s ease-in-out;
     font-size: 0.7rem;
 }
+@keyframes msgSlideTop {
+    0% {
+        -webkit-transform: translate(-50%, 50%);
+        transform: translate(-50%, 50%);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
 
 .msg {
     position: fixed;
@@ -76,9 +86,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-
     border: 10px solid #dfb0ff;
     background-color: rgba(255,255,255,0.92);
+    animation: msgSlideTop 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .msg h2 {

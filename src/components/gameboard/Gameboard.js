@@ -15,7 +15,9 @@ function GameBoard(props) {
 
     const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
-    const [gameIsOver, setGameIsOver] = useState(true);
+
+    const [userWon, setUserWon] = useState(false);
+    const [gameIsOver, setGameIsOver] = useState(false);
 
     const maxScore = getMaximumScore(props.gameMode);
 
@@ -33,6 +35,8 @@ function GameBoard(props) {
         maxScore,
         gameIsOver,
         setGameIsOver,
+        userWon,
+        setUserWon,
 
     }
 
