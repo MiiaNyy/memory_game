@@ -1,6 +1,6 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
 import React from "react";
-import { ScoreContainer, Btn, Sticky } from "../styles/styles.js"
+import { ScoreContainer, Btn } from "../styles/styles.js"
 
 
 function Scoreboard(props) {
@@ -12,28 +12,17 @@ function Scoreboard(props) {
                 <p>Game Mode: { stateObj.gameMode }</p>
             </ScoreContainer>
 
-            <ScoreContainer className="sticky" primary>
+            <ScoreContainer primary>
                 <p>Current Score { stateObj.currentScore }</p>
                 <p>High score { stateObj.highScore }</p>
                 <Btn onClick={ ()=>stateObj.setCurrentCards(getCardsFromShuffledArr(stateObj.currentCards)) }>
                     Shuffle
                 </Btn>
             </ScoreContainer>
-
         </>
 
     )
 }
-
-/*
-*             <ScoreContainer primary>
-                <p>Current Score { stateObj.currentScore }</p>
-                <p>High score { stateObj.highScore }</p>
-                <Btn onClick={ ()=>stateObj.setCurrentCards(getCardsFromShuffledArr(stateObj.currentCards)) }>
-                    Shuffle
-                </Btn>
-            </ScoreContainer>
-* */
 
 export default Scoreboard;
 

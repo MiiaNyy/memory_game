@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { GameBoardContainer, Container, CharacterImage } from '../styles/styles'
-
+import React, { useState } from "react";
+import { GameBoardContainer, Container } from '../styles/styles'
 
 import CharacterCard from "./CharacterCard";
 import Scoreboard from "./Scoreboard";
+import GameEndedMessages from "../GameEndedMessages";
 
 import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
 import { setItemsToStorage, getItemsFromStorage } from "../../helpers/localStorage"
 
 function GameBoard(props) {
 
-
     const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(props.gameMode));
     const [clickedCards, setClickedCards] = useState([]);
 
     const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
-    const [maxScore, setMaxScore] = useState(getMaximumScore(props.gameMode));
+    const [gameIsOver, setGameIsOver] = useState(true);
+
+    const maxScore = getMaximumScore(props.gameMode);
 
     const stateObj = {
         currentScore,
@@ -30,6 +31,9 @@ function GameBoard(props) {
         gameMode: props.gameMode,
         setGameMode: props.setGameMode,
         maxScore,
+        gameIsOver,
+        setGameIsOver,
+
     }
 
     getItemsFromStorage('highScore', setHighScore, highScore);
@@ -43,9 +47,12 @@ function GameBoard(props) {
                         return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
                     }) }
             </GameBoardContainer>
+            <GameEndedMessages stateObj={ stateObj }/>
         </Container>
     )
 }
+
+
 
 
 function getMaximumScore(gameMode) {

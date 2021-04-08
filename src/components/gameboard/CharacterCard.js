@@ -3,8 +3,6 @@ import { CharacterImage, Card } from "../styles/styles"
 import React from "react";
 
 
-let clickCounter = 0;
-
 function CharacterCard(props) {
     const characterObj = props.obj;
     const stateObj = props.stateObj;
@@ -45,14 +43,13 @@ function checkIfGameContinues(stateObj, currentCharacter) {
 }
 
 function gameOver(obj) {
-    alert('GAME OVER');
-    obj.setCurrentCards(()=>getCardsFromShuffledArr(obj.currentCards));
+
+    obj.setGameIsOver(true);
+
     if ( obj.currentScore > obj.highScore ) {
         obj.setHighScore(obj.currentScore);
     }
-    obj.setCurrentScore(0);
-    obj.setClickedCards([]);
-    clickCounter = 0;
+
 }
 
 
