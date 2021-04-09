@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { GameBoardContainer, Container } from '../styles/styles'
+import { Container } from '../styles/generalStyles'
+import { NewHighScoreMessage } from "../styles/messagesStyles";
+import { GameboardContainer } from "../styles/gameboardStyles";
 
 import CharacterCard from "./CharacterCard";
 import Scoreboard from "./Scoreboard";
-import GameEndedMessages from "../gameEndedMessages/GameEndedMessages";
+import GameEndedMessage from "../gameEndedMessages/GameEndedMessage";
 
 import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
 import { setItemsToStorage, getItemsFromStorage } from "../../helpers/localStorage"
@@ -13,17 +15,17 @@ function GameBoard(props) {
     const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(props.gameMode));
     const [clickedCards, setClickedCards] = useState([]);
 
-    const [currentScore, setCurrentScore] = useState(0);
+    const [currentScore, setCurrentScore] = useState(19);
     const [highScore, setHighScore] = useState(0);
 
     const [userWon, setUserWon] = useState(false);
     const [gameIsOver, setGameIsOver] = useState(false);
-
-    const maxScore = getMaximumScore(props.gameMode);
+    const [hardestLevelWon, setHardestLevelWon] = useState(false);
 
     const [highScoreAnimation, setHighScoreAnimation] = useState(false);
 
-    const animation = highScoreAnimation ?  "high-score high-score_animation": "high-score";
+    const animation = highScoreAnimation ? "high-score_animation" : "hidden";
+    const maxScore = getMaximumScore(props.gameMode);
 
     const stateObj = {
         currentScore,
@@ -41,11 +43,10 @@ function GameBoard(props) {
         setGameIsOver,
         userWon,
         setUserWon,
-        setHighScoreAnimation
+        setHighScoreAnimation,
+        hardestLevelWon,
+        setHardestLevelWon
     }
-
-
-
 
 
     getItemsFromStorage('highScore', setHighScore, highScore);
@@ -54,16 +55,16 @@ function GameBoard(props) {
     return (
         <Container gameboard>
             <Scoreboard stateObj={ stateObj }/>
-            <GameBoardContainer>
+            <GameboardContainer>
                 {
                     currentCards.map((item)=>{
                         return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
                     }) }
-            </GameBoardContainer>
-            <GameEndedMessages stateObj={ stateObj }/>
-            <div className={ animation }>
+            </GameboardContainer>
+            <GameEndedMessage stateObj={ stateObj }/>
+            <NewHighScoreMessage className={ animation }>
                 <p>✨ New high score ✨</p>
-            </div>
+            </NewHighScoreMessage>
         </Container>
     )
 }

@@ -68,28 +68,6 @@ button {
     font-size: 0.7rem;
 }
 
-.high-score {
-    width: 90%;
-    max-width: 300px;
-    position: fixed;
-    top: 5%;
-    right: 5%;
-    padding: 0.5em 0;
-    text-align: center;
-    border: 10px solid #f66b92;
-    background-color: rgba(255, 255, 255, 0.92);
-    -webkit-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
-    -moz-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
-    box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
-    transition: all 0.8s ease-in-out;
-    opacity: 0;
-}
-
-.high-score p {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
 @keyframes slide-up {
     0% {
         opacity: 0;
@@ -116,16 +94,6 @@ button {
     }
 }
 
-.toggleOut {
-    animation: slide-down 500ms;
-    opacity: 0;
-}
-
-.toggleIn {
-    animation: slide-up 500ms;
-    opacity: 1;
-}
-
 
 @keyframes highScoreSlide {
     0% {
@@ -146,11 +114,28 @@ button {
     }
 }
 
+.toggleOut {
+    animation: slide-down 500ms;
+    opacity: 0;
+}
+
+.toggleIn {
+    animation: slide-up 500ms;
+    opacity: 1;
+}
+
 .high-score_animation {
     animation: highScoreSlide 2500ms;
     opacity: 0;
 }
 
+.lrg-img {
+    height: 200px;
+}
+
+.staff {
+    transform: rotate(20deg);
+}
 
 @media (min-width: 500px) {
     p {
@@ -159,9 +144,5 @@ button {
 
     button {
         font-size: 0.8rem;
-    }
-
-    .high-score p {
-        font-size: 0.9rem;
     }
 }

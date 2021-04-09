@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Btn, BtnContainer, Flex, MessageContainer } from "../styles/styles";
-
-import {resetGame, playNextLevel} from "./resetGame";
+import { Btn, BtnContainer } from "../styles/generalStyles";
+import { Flex, MessageContainer } from "../styles/messagesStyles"
+import { resetGame, playNextLevel } from "./resetGame";
 
 function Message(props) {
     let stateObj = props.stateObj;
@@ -10,7 +10,7 @@ function Message(props) {
     stateObj.setSlideAnimation = setSlideAnimation;
 
     return (
-        <MessageContainer className={ animation }>
+        <MessageContainer  className={ animation }>
             <h2>{ props.header }</h2>
             <Flex>
                 <Flex endMsgText>
@@ -34,7 +34,7 @@ function ResetGameBtns(props) {
     if ( props.stateObj.gameIsOver ) {
         return <Btn onClick={ ()=>resetGame(props.stateObj) } hard>Try Again</Btn>
     } else {
-        return <Btn onClick={ () => playNextLevel(props.stateObj) } hard>Next level 🡢</Btn>
+        return <Btn onClick={ ()=>playNextLevel(props.stateObj) } hard>Next level 🡢</Btn>
     }
 }
 

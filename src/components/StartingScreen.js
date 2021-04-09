@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, HeaderTitle, Btn, BtnContainer, Paragraph, StartBtn, AnimationCont } from "./styles/styles";
-import title from "../images/title.png"
+import { Container, Btn, BtnContainer, Paragraph } from "./styles/generalStyles";
+import { AnimationCont, HeaderTitle, StartBtn } from "./styles/startingScreenStyles";
+import title from "../images/title.png";
 
 function StartingScreen(props) {
     const [difficultySelected, setDifficultySelected] = useState(false);
@@ -8,25 +9,6 @@ function StartingScreen(props) {
     function selectLevel(level) {
         props.setGameMode(level)
         setDifficultySelected(true);
-    }
-
-    function StartBtnContainer() {
-        if ( difficultySelected ) {
-            return (
-                <AnimationCont>
-                    <Paragraph>Then you can start the game when you are ready. <br/> Good luck ✨</Paragraph>
-                    <BtnContainer start="true">
-                        <StartBtn active={ difficultySelected } onClick={ ()=>{
-                            difficultySelected ? props.setGameIsStarted(true) : console.log('Difficulty level not yet' +
-                                ' selected');
-                        } }>start
-                        </StartBtn>
-                    </BtnContainer>
-                </AnimationCont>
-            )
-        } else {
-            return <></>
-        }
     }
 
     return (
@@ -43,9 +25,28 @@ function StartingScreen(props) {
                 <Btn onClick={ ()=>selectLevel('Medium') }>Medium</Btn>
                 <Btn onClick={ ()=>selectLevel('Hard') } hard>Hard</Btn>
             </BtnContainer>
-            <StartBtnContainer/>
+            <StartBtnContainer difficultySelected={difficultySelected} setGameIsStarted={props.setGameIsStarted}/>
         </Container>
     );
+}
+
+function StartBtnContainer(props) {
+    if ( props.difficultySelected ) {
+        return (
+            <AnimationCont>
+                <Paragraph>Then you can start the game when you are ready. <br/> Good luck ✨</Paragraph>
+                <BtnContainer start="true">
+                    <StartBtn active={ props.difficultySelected } onClick={ ()=>{
+                        props.difficultySelected ? props.setGameIsStarted(true) : console.log('Difficulty level not' +
+                            ' yet selected');
+                    } }>start
+                    </StartBtn>
+                </BtnContainer>
+            </AnimationCont>
+        )
+    } else {
+        return <></>
+    }
 }
 
 export default StartingScreen;

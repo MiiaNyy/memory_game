@@ -1,5 +1,5 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
-import { CharacterImage, Card } from "../styles/styles"
+import { CharacterImage, Card } from "../styles/characterCardStyles"
 import React from "react";
 
 
@@ -35,7 +35,12 @@ function handleCardClick(stateObj, characterObj) {
 
 
         if ( stateObj.currentScore === (stateObj.maxScore - 1) || stateObj.currentScore >= stateObj.maxScore ) {
-            stateObj.setUserWon(true);
+            if(stateObj.gameMode === 'Hard') {
+                stateObj.setHardestLevelWon(true);
+            } else {
+                stateObj.setUserWon(true);
+            }
+
         } else {
             stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
         }
@@ -49,7 +54,7 @@ function checkIfGameContinues(stateObj, currentCharacter) {
     if ( clickedCards.length > 0 ) {
         for (let i = 0; i < clickedCards.length; i++) {
             if ( currentCharacter === clickedCards[i] ) {
-                gameOver(stateObj);
+                stateObj.setGameIsOver(true);
                 return false;
             }
         }
@@ -57,15 +62,6 @@ function checkIfGameContinues(stateObj, currentCharacter) {
     return true;
 }
 
-function gameOver(obj) {
-
-    obj.setGameIsOver(true);
-
-    if ( obj.currentScore > obj.highScore ) {
-        obj.setHighScore(obj.currentScore);
-    }
-
-}
 
 
 export default CharacterCard;

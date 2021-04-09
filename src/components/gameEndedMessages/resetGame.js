@@ -20,7 +20,11 @@ function playNextLevel(obj) {
 function resetGame(obj) {
     obj.setSlideAnimation(true);
     setTimeout(()=>{
-        obj.setGameIsOver(false);
+        if(obj.gameMode === 'Hard') {
+            obj.setHardestLevelWon(false);
+        } else {
+            obj.setGameIsOver(false);
+        }
     }, 1000);
     obj.setCurrentScore(0);
     obj.setClickedCards([]);

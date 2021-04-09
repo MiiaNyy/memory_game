@@ -1,6 +1,7 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
 import React from "react";
-import { ScoreContainer, Btn } from "../styles/styles.js"
+import { Btn } from "../styles/generalStyles.js"
+import { ScoreContainer } from "../styles/gameboardStyles";
 
 
 function Scoreboard(props) {
@@ -9,7 +10,7 @@ function Scoreboard(props) {
         <>
             <ScoreContainer>
                 <p>Max score { stateObj.maxScore }</p>
-                <p>Game Mode: { stateObj.gameMode }</p>
+                <p>Difficulty level: { stateObj.gameMode }</p>
             </ScoreContainer>
 
             <ScoreContainer primary>
