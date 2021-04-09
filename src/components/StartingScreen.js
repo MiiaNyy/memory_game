@@ -44,7 +44,6 @@ function StartingScreen(props) {
                 <Btn onClick={ ()=>selectLevel('Hard') } hard>Hard</Btn>
             </BtnContainer>
             <StartBtnContainer/>
-
         </Container>
     );
 }

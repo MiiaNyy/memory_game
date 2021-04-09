@@ -68,6 +68,28 @@ button {
     font-size: 0.7rem;
 }
 
+.high-score {
+    width: 90%;
+    max-width: 300px;
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    padding: 0.5em 0;
+    text-align: center;
+    border: 10px solid #f66b92;
+    background-color: rgba(255, 255, 255, 0.92);
+    -webkit-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    -moz-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+}
+
+.high-score p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
 @keyframes slide-up {
     0% {
         opacity: 0;
@@ -105,6 +127,31 @@ button {
 }
 
 
+@keyframes highScoreSlide {
+    0% {
+        opacity: 0;
+        top: -10%;
+    }
+    30% {
+        opacity: 1;
+        top: 5%;
+    }
+    60% {
+        opacity: 1;
+        top: 5%;
+    }
+    100% {
+        opacity: 0;
+        top: -10%;
+    }
+}
+
+.high-score_animation {
+    animation: highScoreSlide 2500ms;
+    opacity: 0;
+}
+
+
 @media (min-width: 500px) {
     p {
         font-size: 1rem;
@@ -112,5 +159,9 @@ button {
 
     button {
         font-size: 0.8rem;
+    }
+
+    .high-score p {
+        font-size: 0.9rem;
     }
 }

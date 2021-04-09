@@ -7,13 +7,14 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 1em auto 0;
   background-color: rgba(0, 7, 15, 0.56);
+  padding-bottom: 1em;
   ${ props=>
           props.gameboard && css`
             padding-bottom: 0.6em;
             margin-bottom: 2em;
             margin-top: 0` };
   @media (min-width: 900px) {
-    padding: 0 5em 1em;
+    padding: 0 5em 1em 5em;
   }
 `;
 

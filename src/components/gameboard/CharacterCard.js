@@ -25,13 +25,22 @@ function handleCardClick(stateObj, characterObj) {
         });
         stateObj.setCurrentScore((prev)=>prev + 1);
 
+        if ( stateObj.currentScore === (stateObj.highScore) || stateObj.currentScore >= stateObj.highScore ) {
+            stateObj.setHighScore((prev) => prev +1);
+            stateObj.setHighScoreAnimation(true);
+            setTimeout(() => {
+                stateObj.setHighScoreAnimation(false);
+            },2500)
+        }
+
+
         if ( stateObj.currentScore === (stateObj.maxScore - 1) || stateObj.currentScore >= stateObj.maxScore ) {
             stateObj.setUserWon(true);
         } else {
             stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
         }
     }
-    console.log('current score is ' + stateObj.currentScore + ' and max score is ' + stateObj.maxScore);
+    console.log('current score is ' + stateObj.currentScore + ' and high score is ' + stateObj.highScore);
 }
 
 function checkIfGameContinues(stateObj, currentCharacter) {
