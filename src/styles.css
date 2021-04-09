@@ -67,55 +67,41 @@ button {
     transition: all 0.2s ease-in-out;
     font-size: 0.7rem;
 }
-@keyframes msgSlideTop {
+
+@keyframes slide-up {
     0% {
+        opacity: 0;
         -webkit-transform: translate(-50%, 50%);
         transform: translate(-50%, 50%);
     }
     100% {
+        opacity: 1;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
 }
 
-.msg {
-    position: fixed;
-    width: 90%;
-    max-width: 650px;
-    padding: 1em 1em 0;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 10px solid #dfb0ff;
-    background-color: rgba(255,255,255,0.92);
-    animation: msgSlideTop 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+@keyframes slide-down {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(-50%, 50%);
+        transform: translate(-50%, 50%);
+    }
 }
 
-.msg h2 {
-    font-weight: 400;
-    text-align: center;
-    font-size: 3rem;
-    text-decoration: underline;
-    padding: 0 0 0.5em;
+.toggleOut {
+    animation: slide-down 500ms;
+    opacity: 0;
 }
 
-.msg-txt {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-}
-
-.msg-points {
-    margin: 0 auto;
-    width: 80%;
-    padding: 0 0.5em;
-    border-bottom: 2px solid #dfb0ff;
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
+.toggleIn {
+    animation: slide-up 500ms;
+    opacity: 1;
 }
 
 

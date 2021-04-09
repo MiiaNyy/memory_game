@@ -187,6 +187,42 @@ const Card = styled.div
     `
 ;
 
+// GAME ENDED MESSAGES
+const MessageContainer = styled.div`
+  position: fixed;
+  width: 90%;
+  max-width: 650px;
+  padding: 1em 1em 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 10px solid #dfb0ff;
+  background-color: rgba(255, 255, 255, 0.92);
+  
+
+  & > h2 {
+    font-weight: 400;
+    text-align: center;
+    font-size: 3rem;
+    text-decoration: underline;
+    padding: 0 0 0.5em;
+  }
+`;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${ props=>
+          props.endMsgPoints && css`
+            margin: 0 auto;
+            width: 80%;
+            padding: 0 0.5em;
+            border-bottom: 2px solid #dfb0ff;` };
+  ${ props=>
+          props.endMsgText && css`
+            flex-direction: column;
+            text-align: center;` };
+`;
 
 export {
     GameBoardContainer,
@@ -200,4 +236,6 @@ export {
     StartBtn,
     BtnContainer,
     AnimationCont,
+    MessageContainer,
+    Flex,
 };

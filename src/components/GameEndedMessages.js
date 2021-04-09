@@ -1,5 +1,5 @@
-import React from 'react';
-import { Btn, BtnContainer } from "./styles/styles";
+import React, { useState } from 'react';
+import { Btn, BtnContainer, MessageContainer, Flex } from "./styles/styles";
 import crying from "../images/crying.png"
 import happy from "../images/happy.png";
 import getCurrentCardDeck from "../helpers/getCurrentCardDeck";
@@ -18,6 +18,7 @@ const images = {
 
 function GameEndedMessages(props) {
     let stateObj = props.stateObj;
+    const [slideDownAnimation, setSlideDownAnimation] = useState(false);
     if ( stateObj.gameIsOver ) {
         return (
             <Message image={ images.gameOver } header="Game over" stateObj={ stateObj }>
@@ -26,7 +27,8 @@ function GameEndedMessages(props) {
         )
     } else if ( stateObj.userWon ) {
         return (
-            <Message image={ images.userWon } header="✨ Congratulations ✨" stateObj={ stateObj }>
+            <Message slideDown={ slideDownAnimation } image={ images.userWon } header="✨ Congratulations ✨"
+                     stateObj={ stateObj }>
                 You got all of the characters without clicking the same character twice.
             </Message>
         )
@@ -37,24 +39,27 @@ function GameEndedMessages(props) {
 
 function Message(props) {
     let stateObj = props.stateObj;
+    const [toggleSlideAnimation, setSlideAnimation] = useState(false);
+    const animation = toggleSlideAnimation ? "toggleOut" : "toggleIn";
+    stateObj.setSlideAnimation = setSlideAnimation;
     return (
-        <div className="msg">
+        <MessageContainer className={ animation }>
             <h2>{ props.header }</h2>
-            <div className="flex">
-                <div className="msg-txt">
+            <Flex>
+                <Flex endMsgText>
                     <p>{ props.children }</p>
-                    <div className="flex msg-points">
+                    <Flex endMsgPoints>
                         <p>Your points: { stateObj.currentScore } </p>
                         <p>Max points: { stateObj.maxScore } </p>
-                    </div>
+                    </Flex>
                     <BtnContainer>
                         <Btn onClick={ ()=>location.reload() } easy>🡠 Home</Btn>
                         <ResetGameBtns stateObj={ stateObj }/>
                     </BtnContainer>
-                </div>
+                </Flex>
                 <img src={ props.image.img } alt={ props.image.description }/>
-            </div>
-        </div>
+            </Flex>
+        </MessageContainer>
     )
 }
 
@@ -62,13 +67,19 @@ function ResetGameBtns(props) {
     if ( props.stateObj.gameIsOver ) {
         return <Btn onClick={ ()=>resetGame(props.stateObj) } hard>Try Again</Btn>
     } else {
-        return <Btn onClick={ ()=>playNextLevel(props.stateObj) } hard>Next level 🡢</Btn>
+        return <Btn onClick={ () => playNextLevel(props.stateObj) } hard>Next level 🡢</Btn>
     }
 }
 
 function playNextLevel(obj) {
     obj.setCurrentScore(0);
     obj.setClickedCards([]);
+    obj.setSlideAnimation(true);
+    setTimeout(()=>{
+        obj.setUserWon(false);
+    }, 1000);
+
+
     if ( obj.gameMode === 'Easy' ) {
         obj.setGameMode('Medium');
         obj.setCurrentCards(()=>getCurrentCardDeck('Medium'));
@@ -79,7 +90,10 @@ function playNextLevel(obj) {
 }
 
 function resetGame(obj) {
-    obj.setGameIsOver(false);
+    obj.setSlideAnimation(true);
+    setTimeout(()=>{
+        obj.setGameIsOver(false);
+    }, 1000);
     obj.setCurrentScore(0);
     obj.setClickedCards([]);
     obj.setCurrentCards(()=>getCurrentCardDeck(obj.gameMode));

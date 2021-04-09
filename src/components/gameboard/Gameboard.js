@@ -13,7 +13,7 @@ function GameBoard(props) {
     const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(props.gameMode));
     const [clickedCards, setClickedCards] = useState([]);
 
-    const [currentScore, setCurrentScore] = useState(0);
+    const [currentScore, setCurrentScore] = useState(7);
     const [highScore, setHighScore] = useState(0);
 
     const [userWon, setUserWon] = useState(false);

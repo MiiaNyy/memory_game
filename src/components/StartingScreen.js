@@ -25,7 +25,7 @@ function StartingScreen(props) {
                 </AnimationCont>
             )
         } else {
-            return <BtnContainer start="true"/>
+            return <></>
         }
     }
 
@@ -34,7 +34,7 @@ function StartingScreen(props) {
             <HeaderTitle>
                 <img src={ title } alt="sailor moon logo"/>
             </HeaderTitle>
-            <Paragraph>This is Sailor Moon inspired memory game. <br/> Your job is to click every character but only
+            <Paragraph>This is Sailor Moon memory game. <br/> Your job is to click every character but only
                 once. If you get all of the characters you win!
             </Paragraph>
             <Paragraph>First select difficulty level:</Paragraph>
