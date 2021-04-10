@@ -1,9 +1,7 @@
 import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
 
 function playNextLevel(obj) {
-    obj.setCurrentScore(0);
-    obj.setClickedCards([]);
-    obj.setSlideAnimation(true);
+    resetStates(obj);
     setTimeout(()=>{
         obj.setUserWon(false);
     }, 1000);
@@ -18,17 +16,22 @@ function playNextLevel(obj) {
 }
 
 function resetGame(obj) {
-    obj.setSlideAnimation(true);
+    resetStates(obj);
     setTimeout(()=>{
-        if(obj.gameMode === 'Hard') {
-            obj.setHardestLevelWon(false);
+        if ( obj.gameMode === 'Hard' ) {
+            obj.setUserWon(false);
         } else {
             obj.setGameIsOver(false);
         }
     }, 1000);
-    obj.setCurrentScore(0);
-    obj.setClickedCards([]);
     obj.setCurrentCards(()=>getCurrentCardDeck(obj.gameMode));
 }
 
-export {resetGame, playNextLevel};
+function resetStates(obj) {
+    obj.setCurrentScore(0);
+    obj.setClickedCards([]);
+    obj.setSlideAnimation(true);
+}
+
+
+export { resetGame, playNextLevel };

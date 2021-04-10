@@ -17,51 +17,49 @@ function CharacterCard(props) {
 
 function handleCardClick(stateObj, characterObj) {
     let currentCard = characterObj.id;
-    let gameCanContinue = checkIfGameContinues(stateObj, currentCard);
+    let gameIsOver = checkForGameOver(stateObj, currentCard);
 
-    if ( gameCanContinue ) {
+    if ( !gameIsOver ) {
         stateObj.setClickedCards((prev)=>{
             return [...prev, currentCard]
         });
         stateObj.setCurrentScore((prev)=>prev + 1);
-
-        if ( stateObj.currentScore === (stateObj.highScore) || stateObj.currentScore >= stateObj.highScore ) {
-            stateObj.setHighScore((prev) => prev +1);
-            stateObj.setHighScoreAnimation(true);
-            setTimeout(() => {
-                stateObj.setHighScoreAnimation(false);
-            },2500)
-        }
-
-
-        if ( stateObj.currentScore === (stateObj.maxScore - 1) || stateObj.currentScore >= stateObj.maxScore ) {
-            if(stateObj.gameMode === 'Hard') {
-                stateObj.setHardestLevelWon(true);
-            } else {
-                stateObj.setUserWon(true);
-            }
-
-        } else {
-            stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
-        }
+        checkForHighScore(stateObj);
+        checkIfUserWon(stateObj);
+        stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
     }
-    console.log('current score is ' + stateObj.currentScore + ' and high score is ' + stateObj.highScore);
 }
 
-function checkIfGameContinues(stateObj, currentCharacter) {
+
+function checkIfUserWon(obj) {
+    if ( obj.currentScore === (obj.maxScore - 1) || obj.currentScore >= obj.maxScore ) {
+        obj.setUserWon(true);
+    }
+}
+
+function checkForHighScore(obj) {
+    if ( obj.currentScore === (obj.highScore) || obj.currentScore >= obj.highScore ) {
+        obj.setHighScore((prev)=>prev + 1);
+        obj.setHighScoreAnimation(true);
+        setTimeout(()=>{
+            obj.setHighScoreAnimation(false);
+        }, 2500)
+    }
+}
+
+function checkForGameOver(stateObj, currentCharacter) {
     let clickedCards = stateObj.clickedCards;
 
     if ( clickedCards.length > 0 ) {
         for (let i = 0; i < clickedCards.length; i++) {
             if ( currentCharacter === clickedCards[i] ) {
                 stateObj.setGameIsOver(true);
-                return false;
+                return true;
             }
         }
     }
-    return true;
+    return false;
 }
-
 
 
 export default CharacterCard;

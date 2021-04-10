@@ -20,7 +20,6 @@ function GameBoard(props) {
 
     const [userWon, setUserWon] = useState(false);
     const [gameIsOver, setGameIsOver] = useState(false);
-    const [hardestLevelWon, setHardestLevelWon] = useState(false);
 
     const [highScoreAnimation, setHighScoreAnimation] = useState(false);
 
@@ -43,9 +42,7 @@ function GameBoard(props) {
         setGameIsOver,
         userWon,
         setUserWon,
-        setHighScoreAnimation,
-        hardestLevelWon,
-        setHardestLevelWon
+        setHighScoreAnimation
     }
 
 

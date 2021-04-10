@@ -6,29 +6,19 @@ import StartingScreen from "./StartingScreen";
 
 
 function App() {
-    const [gameMode, setGameMode] = useState('Hard');
-    const [gameIsStarted, setGameIsStarted] = useState(true);
-    return (
-        <>
-            <Header/>
-            <GameBoard gameMode={ gameMode } setGameMode={ setGameMode }/>
-        </>
-
-)
-
-}
-
-
-/*
-* if ( !gameIsStarted ) {
-        return <StartingScreen setGameMode={setGameMode} setGameIsStarted={setGameIsStarted}/>
+    const [gameMode, setGameMode] = useState('');
+    const [gameIsStarted, setGameIsStarted] = useState(false);
+    if ( !gameIsStarted ) {
+        return <StartingScreen setGameMode={ setGameMode } setGameIsStarted={ setGameIsStarted }/>
     } else {
         return (
             <>
                 <Header/>
-                <GameBoard gameMode={gameMode} setGameMode={setGameMode}/>
+                <GameBoard gameMode={ gameMode } setGameMode={ setGameMode }/>
             </>
         )
     }
-* */
+
+}
+
 export default App;
