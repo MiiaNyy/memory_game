@@ -19,7 +19,7 @@ module.exports = merge(common, {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader", //2. Inject styles into DOM
+                    "style-loader", //2. Inject Styles into DOM
                     "css-loader" //1. Turns css into commonjs
                 ]
             },

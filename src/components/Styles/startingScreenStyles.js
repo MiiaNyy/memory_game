@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const StartBtn = styled.button`
   font-size: ${ props=>(props.active ? "1.2rem" : "1rem") };
@@ -18,21 +18,5 @@ const HeaderTitle = styled.div`
   text-align: center;
 `;
 
-//
-const slideTop = keyframes`
-  0% {
-    -webkit-transform: translateY(200px);
-    transform: translateY(200px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-`;
 
-const AnimationCont = styled.div`
-  animation: ${ slideTop } 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
-`;
-
-export { AnimationCont, HeaderTitle, StartBtn };
+export { HeaderTitle, StartBtn };

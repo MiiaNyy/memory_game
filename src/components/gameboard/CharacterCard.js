@@ -1,18 +1,14 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
-import { CharacterImage, Card } from "../styles/characterCardStyles"
-import React, { useState } from "react";
+import { CharacterImage, Card } from "../Styles/characterCardStyles"
+import React from "react";
 
 
 function CharacterCard(props) {
     const characterObj = props.obj;
     const stateObj = props.stateObj;
-    const [cardAnimation, setCardAnimation] = useState(false);
-
-    const animate = cardAnimation ? "high-score_animation" : "hidden";
 
     return (
-        <Card className={ animate } counter={ props.counter } onClick={ ()=>handleCardClick(stateObj, characterObj) }
-              id={ characterObj.id }>
+        <Card onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
             <h3>{ characterObj.name }</h3>
             <CharacterImage src={ characterObj.image } alt={ characterObj.description }/>
         </Card>

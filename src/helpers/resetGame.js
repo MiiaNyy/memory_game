@@ -1,4 +1,4 @@
-import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
+import getCurrentCardDeck from "./getCurrentCardDeck";
 
 function playNextLevel(obj) {
     resetStates(obj);

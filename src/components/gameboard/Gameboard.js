@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Container } from '../styles/generalStyles'
-import { NewHighScoreMessage } from "../styles/messagesStyles";
-import { GameboardContainer } from "../styles/gameboardStyles";
+import { Container } from '../Styles/generalStyles'
+import { NewHighScoreMessage } from "../Styles/messagesStyles";
+import { GameboardContainer } from "../Styles/gameboardStyles";
 
 import CharacterCard from "./CharacterCard";
 import Scoreboard from "./Scoreboard";
 import GameEndedMessage from "../gameEndedMessages/GameEndedMessage";
 
 import getCurrentCardDeck from "../../helpers/getCurrentCardDeck";
+import getMaximumScore from "../../helpers/getMaximunScore";
 import { setItemsToStorage, getItemsFromStorage } from "../../helpers/localStorage"
 
 function GameBoard(props) {
@@ -45,7 +46,6 @@ function GameBoard(props) {
         setHighScoreAnimation
     }
 
-
     getItemsFromStorage('highScore', setHighScore, highScore);
     setItemsToStorage('highScore', highScore);
 
@@ -66,15 +66,7 @@ function GameBoard(props) {
 }
 
 
-function getMaximumScore(gameMode) {
-    if ( gameMode === 'Easy' ) {
-        return 8;
-    } else if ( gameMode === 'Medium' ) {
-        return 12;
-    } else {
-        return 20;
-    }
-}
+
 
 
 export default GameBoard;

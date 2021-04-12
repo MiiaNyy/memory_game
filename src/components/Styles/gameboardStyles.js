@@ -1,13 +1,14 @@
 // Gameboard
 import styled, { css } from "styled-components";
 
-const GameboardContainer = styled.main`
-          display: flex;
-          justify-content: space-evenly;
-          flex-wrap: wrap;
-          gap: 2em;
-          margin-bottom: 2em;
-          padding-top: 1em;
+const GameboardContainer = styled.main
+    `
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 2em;
+      margin-bottom: 2em;
+      padding-top: 1em;
     `
 ;
 
@@ -39,4 +40,4 @@ const ScoreContainer = styled.section
     `
 ;
 
-export {GameboardContainer, ScoreContainer};
+export { GameboardContainer, ScoreContainer };

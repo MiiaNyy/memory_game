@@ -1,7 +1,7 @@
 import getCardsFromShuffledArr from "../../helpers/getCardsFromShuffledArr";
 import React from "react";
-import { Btn } from "../styles/generalStyles.js"
-import { ScoreContainer } from "../styles/gameboardStyles";
+import { Btn } from "../Styles/generalStyles.js"
+import { ScoreContainer } from "../Styles/gameboardStyles";
 
 
 function Scoreboard(props) {

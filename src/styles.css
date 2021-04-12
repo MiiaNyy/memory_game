@@ -4,12 +4,6 @@
     box-sizing: border-box;
 }
 
-/*
-font-family: 'Great Vibes', cursive;
-font-family: 'Oregano', cursive;
-font-family: 'Montserrat', sans-serif;
-*/
-
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -19,9 +13,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-color: #dfb0ff;
-
 }
-
 
 img {
     max-width: 100%;
@@ -58,6 +50,7 @@ p {
     font-weight: 700;
 }
 
+/* GENERAL */
 button {
     padding: 0.7em 1.4em;
     font-weight: 700;
@@ -89,6 +82,8 @@ button {
 ::-webkit-scrollbar-thumb:hover {
     background: #ff2ce4;
 }
+
+/* ANIMATIONS */
 
 @keyframes slide-up {
     0% {
@@ -136,6 +131,19 @@ button {
     }
 }
 
+@keyframes start-btn-slide-up {
+    0% {
+        -webkit-transform: translateY(200px);
+        transform: translateY(200px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .toggleOut {
     animation: slide-down 500ms;
     opacity: 0;
@@ -151,14 +159,12 @@ button {
     opacity: 0;
 }
 
-.lrg-img {
-    height: 200px;
+.slide-up {
+    animation: start-btn-slide-up 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    opacity: 0;
 }
 
-.staff {
-    transform: rotate(20deg);
-}
-
+/* MEDIA */
 @media (min-width: 500px) {
     p {
         font-size: 1rem;

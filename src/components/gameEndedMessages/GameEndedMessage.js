@@ -1,9 +1,8 @@
 import React from 'react';
 import crying from "../../images/crying.png"
 import happy from "../../images/happy.png";
-
+import winner from "../../images/winner.png";
 import Message from "./Message";
-
 
 const images = {
     gameOver: {
@@ -13,9 +12,12 @@ const images = {
     userWon: {
         img: happy,
         description: 'sailor moon winking'
+    },
+    lastLevelWon: {
+        img: winner,
+        description: "sailor guardians",
     }
 }
-
 
 function GameEndedMessage(props) {
     let stateObj = props.stateObj;
@@ -27,14 +29,13 @@ function GameEndedMessage(props) {
         )
     } else if ( stateObj.userWon && stateObj.gameMode !== 'Hard' ) {
         return (
-            <Message image={ images.userWon } header="✨ Congratulations ✨"
-                     stateObj={ stateObj }>
+            <Message image={ images.userWon } header="✨ Congratulations ✨" stateObj={ stateObj }>
                 You got all of the characters without clicking the same character twice.
             </Message>
         )
     } else if ( stateObj.userWon && stateObj.gameMode === 'Hard') {
         return (
-            <Message stateObj={ stateObj } lastLevelWon={true}/>
+            <Message image={images.lastLevelWon} stateObj={ stateObj } lastLevelWon={true}/>
         )
     } else {
         return <></>

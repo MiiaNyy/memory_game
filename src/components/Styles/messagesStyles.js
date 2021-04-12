@@ -17,31 +17,40 @@ const MessageContainer = styled.div`
   & > h2 {
     font-weight: 400;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     text-decoration: underline;
     padding: 0 0 0.5em;
+    @media (min-width: 500px) {
+      font-size: 3rem;
+    }
   }
 `;
 
 const Flex = styled.div`
-  display: flex;
-  justify-content: space-between;
   ${ props=>
-          props.endMsgPoints && css`
-            margin: 0 auto;
-            width: 80%;
-            padding: 0 0.5em;
+          props.message_point_cont && css`
+            //margin: 0 auto;
+            margin: 1em auto;
+            width: 100%;
+            max-width: 350px;
+            padding: 0 0.2em 0.5em;
             border-bottom: 2px solid #dfb0ff;` };
   ${ props=>
-          props.endMsgText && css`
+          props.messsage_txt_cont && css`
             flex-direction: column;
             text-align: center;` };
   ${ props=>
-          props.lastLevel && css`
-            width: 65%;
+          props.message_last_level && css`
+            width: 95%;
+            max-width: 500px;
             margin: 0 auto;
             padding-bottom: 1em;
+
           ` };
+  @media (min-width: 550px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const NewHighScoreMessage = styled.div`
