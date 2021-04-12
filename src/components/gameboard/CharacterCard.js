@@ -17,23 +17,26 @@ function CharacterCard(props) {
 
 function handleCardClick(stateObj, characterObj) {
     let currentCard = characterObj.id;
-    let gameIsOver = checkForGameOver(stateObj, currentCard);
+    let gameContinues = checkForGameOver(stateObj, currentCard);
 
-    if ( !gameIsOver ) {
-        stateObj.setClickedCards((prev)=>{
-            return [...prev, currentCard]
-        });
-        stateObj.setCurrentScore((prev)=>prev + 1);
-        checkForHighScore(stateObj);
-        checkIfUserWon(stateObj);
-        stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
+    // These just ensures that game is on and there is not and game over
+    if ( stateObj.gameIsOn ) {
+        if ( gameContinues ) {
+            stateObj.setClickedCards((prev)=>{
+                return [...prev, currentCard]
+            });
+            stateObj.setCurrentScore((prev)=>prev + 1);
+            checkForHighScore(stateObj);
+            checkIfUserWon(stateObj);
+            stateObj.setCurrentCards(()=>getCardsFromShuffledArr(stateObj.currentCards));
+        }
     }
 }
-
 
 function checkIfUserWon(obj) {
     if ( obj.currentScore === (obj.maxScore - 1) || obj.currentScore >= obj.maxScore ) {
         obj.setUserWon(true);
+        obj.setGameIsOn(false);
     }
 }
 
@@ -54,11 +57,12 @@ function checkForGameOver(stateObj, currentCharacter) {
         for (let i = 0; i < clickedCards.length; i++) {
             if ( currentCharacter === clickedCards[i] ) {
                 stateObj.setGameIsOver(true);
-                return true;
+                stateObj.setGameIsOn(false);
+                return false;
             }
         }
     }
-    return false;
+    return true;
 }
 
 

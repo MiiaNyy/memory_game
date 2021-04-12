@@ -31,6 +31,7 @@ function resetStates(obj) {
     obj.setCurrentScore(0);
     obj.setClickedCards([]);
     obj.setSlideAnimation(true);
+    obj.setGameIsOn(true);
 }
 
 

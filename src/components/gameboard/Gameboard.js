@@ -22,6 +22,8 @@ function GameBoard(props) {
     const [userWon, setUserWon] = useState(false);
     const [gameIsOver, setGameIsOver] = useState(false);
 
+    const [gameIsOn, setGameIsOn] = useState(true);
+
     const [highScoreAnimation, setHighScoreAnimation] = useState(false);
 
     const animation = highScoreAnimation ? "high-score_animation" : "hidden";
@@ -29,22 +31,16 @@ function GameBoard(props) {
 
     // All of the states so children components can use and change them
     const stateObj = {
-        currentScore,
-        setCurrentScore,
-        highScore,
-        setHighScore,
-        currentCards,
-        setCurrentCards,
-        clickedCards,
-        setClickedCards,
-        gameMode: props.gameMode,
-        setGameMode: props.setGameMode,
+        currentScore, setCurrentScore,
+        highScore, setHighScore,
+        currentCards, setCurrentCards,
+        clickedCards, setClickedCards,
+        gameMode: props.gameMode, setGameMode: props.setGameMode,
         maxScore,
-        gameIsOver,
-        setGameIsOver,
-        userWon,
-        setUserWon,
-        setHighScoreAnimation
+        gameIsOver, setGameIsOver,
+        userWon, setUserWon,
+        setHighScoreAnimation,
+        gameIsOn, setGameIsOn,
     }
 
     getItemsFromStorage('highScore', setHighScore, highScore);
@@ -65,9 +61,5 @@ function GameBoard(props) {
         </Container>
     )
 }
-
-
-
-
 
 export default GameBoard;
