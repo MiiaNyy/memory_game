@@ -16,7 +16,7 @@ function GameBoard(props) {
     const [currentCards, setCurrentCards] = useState(getCurrentCardDeck(props.gameMode));
     const [clickedCards, setClickedCards] = useState([]);
 
-    const [currentScore, setCurrentScore] = useState(19);
+    const [currentScore, setCurrentScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
 
     const [userWon, setUserWon] = useState(false);
@@ -27,6 +27,7 @@ function GameBoard(props) {
     const animation = highScoreAnimation ? "high-score_animation" : "hidden";
     const maxScore = getMaximumScore(props.gameMode);
 
+    // All of the states so children components can use and change them
     const stateObj = {
         currentScore,
         setCurrentScore,
