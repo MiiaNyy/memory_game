@@ -36,8 +36,7 @@ const BtnContainer = styled.div`
   gap: 1em;
   margin-bottom: 2em;
   transition: all 0.2s ease-in-out;
-  ${ props=>
-          props.start && css`
+  ${ props=>props.start && css`
             padding-bottom: 2em` };
   @media (min-width: 550px) {
     gap: 5em

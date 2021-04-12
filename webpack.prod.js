@@ -10,13 +10,27 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const glob = require('glob');
+
 module.exports = merge(common, {
     mode: "production",
     output: {
         filename: "bundle.[contenthash].js",
         path: path.resolve(__dirname, "dist"),
+        assetModuleFilename: 'images/[hash][ext][query]',
+        clean: true,
     },
     optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
         minimizer: [
             new OptimizeCssAssetsPlugin(),// minifies css files and accidentally js files too
             new TerserPlugin(), //minifies js files again
@@ -31,8 +45,20 @@ module.exports = merge(common, {
         ]
     },
     plugins: [
+        new ImageminPlugin({
+            pngquant: {
+                quality: '40-50'
+            },
+            externalImages: {
+                context: '.',
+                sources: glob.sync('src/images/**/*.{png,jpg,jpeg,gif,svg}'),
+                destination: 'dist/images',
+                fileName: '[name].[ext]',
+                clean: true,
+            }
+        }),
         new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [

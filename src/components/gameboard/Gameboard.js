@@ -53,10 +53,9 @@ function GameBoard(props) {
         <Container gameboard>
             <Scoreboard stateObj={ stateObj }/>
             <GameboardContainer>
-                {
-                    currentCards.map((item)=>{
-                        return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
-                    }) }
+                { currentCards.map((item)=>{
+                    return <CharacterCard stateObj={ stateObj } obj={ item } key={ item.id }/>
+                }) }
             </GameboardContainer>
             <GameEndedMessage stateObj={ stateObj }/>
             <NewHighScoreMessage className={ animation }>

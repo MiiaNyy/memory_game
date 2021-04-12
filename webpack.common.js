@@ -1,10 +1,10 @@
-
 // Common loaders and rules
+
+
 
 module.exports = {
     entry: "./src/index.js",
     devtool: "source-map",
-
     module: {
         rules: [
             {
@@ -14,6 +14,7 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
+
             },
             {
                 test: /\.js$/,

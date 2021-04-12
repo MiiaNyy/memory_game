@@ -68,6 +68,28 @@ button {
     font-size: 0.7rem;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 0.9em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #F477E0;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ff2ce4;
+}
+
 @keyframes slide-up {
     0% {
         opacity: 0;
@@ -146,3 +168,6 @@ button {
         font-size: 0.8rem;
     }
 }
+
+
+
