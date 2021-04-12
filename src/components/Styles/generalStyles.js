@@ -45,6 +45,7 @@ const BtnContainer = styled.div`
 `;
 
 const Btn = styled.button`
+  
   background-color: ${ props=>props.easy
           ? '#ffd166'
           : props.hard

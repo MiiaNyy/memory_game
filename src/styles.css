@@ -59,6 +59,7 @@ button {
     font-family: 'Montserrat', sans-serif;
     transition: all 0.2s ease-in-out;
     font-size: 0.7rem;
+    cursor: pointer;
 }
 
 /* width */
@@ -74,13 +75,13 @@ button {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-color: #F477E0;
+    background-color: #BE85FF;
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff2ce4;
+    background-color: #9340fc;
 }
 
 /* ANIMATIONS */

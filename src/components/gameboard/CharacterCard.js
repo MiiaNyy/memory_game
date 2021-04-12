@@ -7,8 +7,9 @@ function CharacterCard(props) {
     const characterObj = props.obj;
     const stateObj = props.stateObj;
 
+
     return (
-        <Card onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
+        <Card hoverEffect={ stateObj.gameIsOn } onClick={ ()=>handleCardClick(stateObj, characterObj) } id={ characterObj.id }>
             <h3>{ characterObj.name }</h3>
             <CharacterImage src={ characterObj.image } alt={ characterObj.description }/>
         </Card>

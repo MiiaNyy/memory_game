@@ -23,9 +23,10 @@ const Card = styled.div
       background: linear-gradient(to bottom, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       border: 10px solid palevioletred;
       transition: all 0.2s ease-in-out;
+      cursor: ${ props=>(props.hoverEffect ? "pointer" : "auto") };      
 
       &:hover {
-        transform: scale(1.1);
+        transform: ${ props=>(props.hoverEffect ? "scale(1.1)" : "none") };
       }
     ;
 
