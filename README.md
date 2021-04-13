@@ -6,6 +6,7 @@ Because I was quite familiar already using hooks I also practiced how to use sty
 ## Description
 In the game there is different number of cards on the game board, depending on the level that user wants to play. 
 The goal is to click every card only once. The trick is that all of the cards are shown at once and after every click the order changes.
+### [Live version here](https://miianyy.github.io/memory_game/)
 ## What I learned
 - Better understanding on React hooks 
 - How to use Styled Components
