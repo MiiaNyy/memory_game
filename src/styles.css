@@ -7,6 +7,7 @@
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    /* image from https://wallpapercave.com/aesthetic-sailor-moon-pc-wallpapers */
     background-image: url("./images/backgroundImage.png");
     background-position: center center;
     background-repeat: no-repeat;

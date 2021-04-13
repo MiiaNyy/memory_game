@@ -10,6 +10,7 @@ function App() {
 
     if ( !gameIsStarted ) {
         return <StartingScreen setGameMode={ setGameMode } setGameIsStarted={ setGameIsStarted }/>
+
     } else {
         return (
             <>
@@ -20,5 +21,4 @@ function App() {
     }
 }
 
-/*    */
 export default App;

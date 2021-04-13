@@ -1,18 +1,20 @@
 import {v4 as uuidv4} from 'uuid';
 
-import artemis from '../images/Artemis.png';
+// all images are on this page unless otherwise noted https://sailormoon.fandom.com/wiki/Sailor_Moon_Wiki
+
+import artemis from '../images/Artemis.png'; //https://www.pngkey.com/detail/u2e6a9a9q8o0e6w7_artemis-sailor-moon-luna-sailor-jupiter-sailor-moon/
 import ddGirls from '../images/dd-girls.png';
 import luna from '../images/luna.png';
 import kakyuu from '../images/princess-kakyuu.png';
-import nehelenia from '../images/Queen_Nehelenia.jpg';
-import beryl from '../images/queen-beryljpg.jpg';
-import serenity from '../images/queen-serenity.jpg';
+import nehelenia from '../images/Queen_Nehelenia.jpg'; //https://ultimatepopculture.fandom.com/wiki/Queen_Nehelenia
+import beryl from '../images/queen-beryljpg.jpg'; // https://i.pinimg.com/474x/83/b0/9e/83b09e7daa906cee13153d63e71b3f26.jpg
+import serenity from '../images/queen-serenity.jpg'; //https://sailormooncrystal.fandom.com/wiki/Queen_Serenity
 import chibiMoon from '../images/Chibi_Bust.png';
 import jupiter from '../images/Jupiter_Bust.png';
 import mars from '../images/Mars_Bust.png';
 import moon from '../images/Moon_Bust.png';
 import venus from '../images/Venus_Bust.png';
-import galaxia from '../images/sailor-galaxia.jpg';
+import galaxia from '../images/sailor-galaxia.jpg'; //https://realdeathbattleimp.blogspot.com/2020/07/how-strong-is-sailor-galaxia-death.html
 import mercury from '../images/Mercury_Bust.png';
 import neptune from '../images/Neptune_Bust.png';
 import pluto from '../images/Sailor-Pluto.png';

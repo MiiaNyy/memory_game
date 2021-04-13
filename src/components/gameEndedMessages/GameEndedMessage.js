@@ -1,7 +1,7 @@
 import React from 'react';
-import crying from "../../images/crying.png"
+import crying from "../../images/crying.png" //http://robinscels.rubberslug.com/gallery/inv_info.asp?ItemID=304903
 import happy from "../../images/happy.png";
-import winner from "../../images/winner.png";
+import winner from "../../images/winner.png"; //https://www.kindpng.com/imgv/hbThxJm_sailor-moon-sailor-mars-sailor-jupiter-hd-png/
 import Message from "./Message";
 
 const images = {
